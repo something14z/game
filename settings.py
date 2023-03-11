@@ -1,0 +1,26 @@
+import math
+#screen
+RES = WIDTH, HEIGHT = 1600, 900
+FPS = 24
+HALF_WIDTH = WIDTH // 2
+HALF_HEIGHT = HEIGHT // 2
+
+#Player
+PLAYER_POS = 1.5,5
+PLAYER_ANGLE = 0
+P_SPEED = 0.005
+P_R_SPEED = 0.005
+PLAYER_SIZE_SCALE = 60
+
+#raycast
+FOV = math.pi / 3
+H_FOV = FOV / 2
+RAY_NUM = WIDTH // 2
+H_RAY_NUM = RAY_NUM / 2
+DELTA_ANGLE = FOV / RAY_NUM
+MAX_DEPTH = 20
+SCREEN_DIST = HALF_WIDTH / math.tan(H_FOV)
+
+
+
+
