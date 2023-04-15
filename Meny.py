@@ -1,6 +1,6 @@
-a = 10
-def d (b):
-    #global a
-    a += b
+import tkinter as tk
 
-print(d(2))
+root =Tk()
+
+
+root.mainlop()

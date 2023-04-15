@@ -5,6 +5,7 @@ from map import *
 from player import *
 from raycasting import *
 
+BROWN = (49,23,23)
 class Game:
     def __init__(self):
         pg.init()
@@ -26,6 +27,8 @@ class Game:
         pg.display.set_caption(f'{self.clock.get_fps() :.1f}')
 
 
+
+
     def check_events (self):
         for event in pg.event.get():
             if event.type == pg.QUIT or (event.type == pg.KEYDOWN and event.key == pg.K_ESCAPE):
@@ -33,14 +36,19 @@ class Game:
                 sys.exit
 
     def draw (self):
-        self.screen.fill('black')
-        self.map.draw()
-        self.player.draw()
+        ground = pg.image.load("texture/ground.png")
+        ground = pg.transform.scale(ground, (WIDTH, HEIGHT))
+        self.screen.blit(ground, pg.Rect(0,0, WIDTH, HEIGHT))
+        sky = pg.image.load("texture/sky.png")
+        sky = pg.transform.scale(sky,(WIDTH, HALF_HEIGHT))
+        self.screen.blit(sky , pg.Rect(0,0, WIDTH, HALF_HEIGHT))
+
     def run (self):
         while True:
             self.check_events()
             self.update()
             self.draw()
+
 
 if __name__ == "__main__":
     game = Game()
