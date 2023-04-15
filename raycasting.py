@@ -1,8 +1,6 @@
 import pygame as pg
 import math
 from settings import *
-
-
 class Raycast:
    def __init__ (self, game):
        self.game = game
@@ -79,8 +77,18 @@ class Raycast:
            # remove fishbowl effect
            depth *= math.cos(self.game.player.angle - ray_angle)
 
-           pg.draw.line(self.game.screen, "yellow", (100 * ox, 100 * oy),
-           (100 * ox + 100 * depth * cos_a, 100 * oy + 100 * depth * sin_a), 2)
+           proj_height = SCREEN_DIST / (depth + 0.0001)
+
+           #draw walls
+           value = 50/depth
+           if value > 200:
+               value = 150
+           if value < 0:
+               value = 0
+           GRAY = (value, value, value)
+
+           pg.draw.rect(self.game.screen, GRAY,(ray * SCALE, HALF_HEIGHT - proj_height // 2, SCALE, proj_height))
+
 
            ray_angle += DELTA_ANGLE
    def update(self):
