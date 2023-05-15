@@ -1,7 +1,7 @@
 from settings import*
 import pygame as pg
 import math
-
+from gun import *
 class Player:
     def __init__(self,game):
         self.game = game
@@ -9,6 +9,7 @@ class Player:
         self.angle = PLAYER_ANGLE
         self.rel = 0
         self.last_mouse_x = pg.mouse.get_pos()[0]
+        self.gun = Weapon
 
     def movement(self):
         sin1 = math.sin(self.angle)
@@ -46,6 +47,9 @@ class Player:
             dy += speed_cos
 
         self.check_wall_collision(dx,dy)
+        if key[pg.K_r]:
+            self.gun.fire(self)
+
 
         if key[pg.K_e]:
             self.angle -= P_R_SPEED * self.game.deltatime
