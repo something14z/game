@@ -1,6 +1,6 @@
-import tkinter as tk
+a = 10
+def d (b):
+    #global a
+    a += b
 
-root =Tk()
-
-
-root.mainlop()
+print(d(2))
