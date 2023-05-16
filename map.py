@@ -11,7 +11,6 @@ template = [
     [_,_,_,_,_,_,_,_,_,_,_,_,1,_,_,_],
        ]
 
-
 class Map:
     def __init__(self, game):
         self._ = False
